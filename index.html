@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu Web App Demo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Chào mừng đến với Trang Giới Thiệu Web App</h1>
+    </header>
+    <main>
+        <section class="intro">
+            <h2>Giới thiệu</h2>
+            <p>Website này giúp bạn truy cập nhanh đến ứng dụng web tiện ích do chúng tôi phát triển.</p>
+        </section>
+        <section class="app-link">
+            <h2>Truy cập Web App</h2>
+            <a id="visit-link" class="main-link" href="https://script.google.com/macros/s/AKfycbzcjhxo3jIPrLA-01gqCfd_d-yPbM9Enjhrp-SvERTXTwXBk_k2vsZLRFPFlDuDEEs4cQ/exec" target="_blank" rel="noopener">
+                Nhấn vào đây để đến Web App
+            </a>
+            <p id="click-count"></p>
+        </section>
+        <section class="features">
+            <h2>Tính năng nổi bật</h2>
+            <ul>
+                <li>Giao diện đơn giản, dễ sử dụng</li>
+                <li>Truy cập nhanh chóng, không cần đăng nhập</li>
+                <li>Bảo mật và an toàn</li>
+                <li>Hỗ trợ trên mọi thiết bị</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Web App Demo. Mọi quyền được bảo lưu.</p>
+    </footer>
+    <script>
+        // Lấy số lần click từ LocalStorage hoặc gán 0 nếu chưa có
+        let count = parseInt(localStorage.getItem('webAppClickCount')) || 0;
+        const countDisplay = document.getElementById('click-count');
+        const link = document.getElementById('visit-link');
+        function updateCountDisplay() {
+            countDisplay.textContent = `Bạn đã nhấn vào liên kết này ${count} lần trên trình duyệt này.`;
+        }
+        link.addEventListener('click', function() {
+            count++;
+            localStorage.setItem('webAppClickCount', count);
+            updateCountDisplay();
+        });
+        updateCountDisplay();
+    </script>
+</body>
+</html>
